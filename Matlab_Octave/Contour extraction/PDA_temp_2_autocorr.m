@@ -23,31 +23,27 @@ for i=1:1:length(win_sz)
       
       [val_max, ind_max] = max(scorr(find(lag==thres_t2):find(lag==thres_t1)));
       ind_max = ind_max + find(lag==thres_t2);
-%       scorr(lag<thres_t2)=0; % | time thresholds
-%       scorr(lag>thres_t1)=0; % |
-       n=ceil(win_index/win_sz(i)); % normalized index of the windows
-%       [peaks, peaks_indices] = findpeaks(scorr); % detect the peaks of the self-corr function
+      n=ceil(win_index/win_sz(i)); % normalized index of the windows
 
       seg(n) = val_max<thres_amp; % detect transient
       freq(n) = 1 / (lag(ind_max) / Fs); % measure frequency
-      
-%       t = (win_index:win_index+win_sz(i))*Ts;
-%       figure(1),
-%       plot(t, sample_trim(win_index:win_index+win_sz(i)));
-%       figure(2),
-%       plot(lag, scorr);
-%       freq(n)
     end
+    
     time_axis = 0:win_sz(i)*Ts:n*win_sz(i)*Ts-win_sz(i)*Ts;
     time_axis_sig = 0:Ts:(length(sample_trim)-1)*Ts;
     figure(1),
     subplot(2,1,1);
     hold on
     plot(time_axis,freq)
-    plot(time_axis, seg.*500)
+    %legend('contour of hummed query');
+    stem(time_axis, seg.*300)
+    ylim([100 250]);
     plot(time_axis_true, freq_true)
+    legend('contour of hummed query','segmentation of the hummed query','ground truth');
+    title('contour extraction, win\_size = 70ms ; amp\_thres = 0.8');
     subplot(2,1,2);
-    hold on
+    % hold on
     plot(time_axis_sig, sample_trim);
-    plot(time_axis_sig_true, sample_trim_true, 'r');
+    title('query signal');
+    % plot(time_axis_sig_true, sample_trim_true, 'r');
 end
