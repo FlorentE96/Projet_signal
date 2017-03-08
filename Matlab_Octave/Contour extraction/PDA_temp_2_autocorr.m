@@ -10,9 +10,9 @@ trim_time = 5*Fs; % trimming time in seconds
 sample_trim = sample(1:trim_time); % first 3 seconds of sound (skip silence at beginning)
 thres_t1 = floor(1/50*Fs); % 80 Hz
 thres_t2 = ceil(1/1000*Fs); % 1500 Hz
-thres_amp = 0.8;
+thres_amp = 0;
 win_sz = floor(Fs * 70e-3);%:floor(Fs * 10e-3) :floor(Fs * 50e-3);
-%% ############ Methode 2 : self-correlation ##############
+%% ############ Methode 2 : self(-correlation ##############
 win_index=1;
 
 for i=1:1:length(win_sz)

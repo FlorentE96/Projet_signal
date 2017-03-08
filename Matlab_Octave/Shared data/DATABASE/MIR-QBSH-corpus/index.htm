@@ -1,0 +1,49 @@
+<html>
+<head>
+	<title>MIR-QBSH: A Corpus for Designing QBSH (Query by Singing/Humming) Systems</title>
+	<meta HTTP-EQUIV="Content-Type" CONTENT="text/html; charset=big5">
+	<meta HTTP-EQUIV="Expires" CONTENT="0">
+</head>
+<body>
+<h2 align=center>MIR-QBSH: A Corpus for Designing QBSH (Query by Singing/Humming) Systems</h2>
+<h3 align=center><a target=_blank href="http://www.cs.nthu.edu.tw/~jang">Roger Jang</a>, <a href="http://mirlab.org">MIR Lab</a> at <a href="http://www.nthu.edu.tw">NTHU</a></h3>
+<hr>
+This directory contains QBSH (Query By Singing/Humming) corpus by <a href="http://mirlab.org">MIR (Multimedia Information Retrieval) Lab</a> at <a href="http://www.cs.nthu.edu.tw">CS Dept</a> of <a href="http://www.nthu.edu.tw">NTHU (National Tsing Hua University)</a>, Taiwan. The corpus can be used for designing QBSH systems which accept a user's singing/humming input to retrieve the intended songs. You can click <a href="http://neural.cs.nthu.edu.tw/jang2/dataSet/childSong4public/MIR-QBSH-corpus.rar">here</a> to download the corpus.
+<p>
+The corpus has been used for the QBSH task at <a target=_blank href="http://www.music-ir.org/mirexwiki/index.php/Main_Page">MIREX (Music Information Retrieval Evaluation eXchange)</a> 2006~2009.
+<p>
+The directory structure of the corpus is as follows:
+<ul>
+<li>midiFile: This folder contains 48 ground-truth MIDI files. List of these MIDI files is available at <a target=_blank href="midiFile/songList.txt">songList.txt</a>, which is tab-separated file with 4 columns: file name, English title ('-' if none), Chinese title ('-' if none), number of wav file recordings. 
+<li>waveFile: This folder contains 4431 singing/humming clips from about 195 subjects. Note that
+	<ul>
+	<li>Each subdirectory under the folder represents the recordings in a specific year. A list of these subdirectories is available at <a target=_blank href="waveFile/yearDirInfo.txt">yearDirInfo.txt</a>, which is tab-separated file with 4 columns: directory name, number of persons in a directory, number of wav files in a directory, original name of the directory (which contains big5-encoded traditional Chinese characters).
+	<li>Each subdirectory under the "year" directory is the "person" directory, representing the recordings of each person in a specific year. The mapping of the "person" directory to their real names (in Chinese) is available at the file "personDirInfo.txt" within each "person" directory.
+	<li>File extension within each "person" directory:
+		<ul>
+		<li>*.wav: Wav files of 8 KHz, 8 bit, mono.
+		<li>*.pv: For each .wav file, there is a corresponding .pv (pitch vector) file. The .pv file contains manually labelled pitch file, with frame size = 256 and overlap = 0. We have tried our best to make the manually labeled pitch as correct as possible. However, since the pitch was labelled by the student who did the recording, there is no guarantee for their correctness. (Some of the early recordings do not have corresponding pv files.) 
+		</ul>
+	</ul>
+</ul>
+
+The recording count for each MIDI file is shown in the following figure:
+<center>
+<a href="recordingCount.png"><img height=300 src="recordingCount.png"></a>
+</center>
+
+<p>
+If you are using the corpus for your research, please kindly give reference as follows:
+<P>
+<b>
+Jyh-Shing Roger Jang, "MIR-QBSH Corpus", MIR Lab, CS Dept, Tsing Hua Univ, Taiwan. Available at the "MIR-QBSH Corpus" link at <a href="http://www.cs.nthu.edu.tw/~jang">http://www.cs.nthu.edu.tw/~jang</a>.
+</b>
+<p>
+Since the corpus is likely to grow with each year's recordings from the stuents who take my course of "Audio Signal Processing and Recognition", it is advised that you should specify what years of recordings are used for training data, validating data, and test data, etc., in your papers/reports if you are using this corpus for your research.
+<p>
+Comments and suggestions should be sent to Roger Jang at "jang@cs.nthu.edu.tw".
+
+<hr>
+
+</body>
+</html>
