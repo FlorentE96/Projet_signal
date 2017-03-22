@@ -37,5 +37,5 @@ end;
 figure(1),
 plot(freq)
 freq_m = mean(freq)
-ylim([0 2*sine_freq]);
+%ylim([0 2*sine_freq1]);
 %
