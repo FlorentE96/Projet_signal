@@ -1,17 +1,24 @@
-clc;
 clear;
+clc;
 close all;
-[sample, Fs] = audioread('00001.wav');
+load('matlab_database.mat');
+
+[sample, Fs] = audioread('00002.wav');
 sample = sample(1*Fs:end);
 
-win_length = 70e-3;
-win_sz = 256;%floor(Fs * win_length);
-[freq, seg] = pitchContour(sample, Fs, 32e-3);
+win_length = 256;
+win_sz = win_length/Fs;
 
-data=load('00001.pv');
-data=data(30:end);
-%GT = readmidi('00001.mid');
-subplot(2,1,1)
-plot(data);
-subplot(2,1,2)
-plot(freq);
+[query, seg] = pitchContour(sample, Fs, win_sz);
+
+query = normalise(query);
+
+test = GT(2,:);
+GT_trim = test(1:win_length:length(query)*win_length);
+
+
+%%
+figure,
+plot(query);
+hold on;
+plot(GT_trim);
